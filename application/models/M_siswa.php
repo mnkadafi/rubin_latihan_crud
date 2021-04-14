@@ -11,12 +11,11 @@ class M_siswa extends CI_Model {
     }
 
     public function getById($kd_siswa) {
+        $this->db->select("*");
+        $this->db->from('tb_siswa');
         $this->db->where(array("kd_siswa" => $kd_siswa));
-        $query = $this->db->get('tb_siswa');
 
-        $row = $query->result_array();
-
-        return $row;
+        return $this->db->get()->row();
     }
 
     public function update($data, $id) {
